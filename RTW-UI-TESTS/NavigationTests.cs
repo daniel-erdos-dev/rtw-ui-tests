@@ -38,7 +38,7 @@ public class NavigationTests
     public void AboutPageLink()
     {
         // Navigate to home page
-        driver.Url = "http://localhost:3000/";
+        driver.Url = Environment.BaseUrl;
         driver.Manage().Window.FullScreen();
 
         // Check the about link and click it
@@ -47,8 +47,8 @@ public class NavigationTests
         aboutLink.Click();
 
         // Assert navigation
-        SeleniumHelpers.WaitUntil(() => driver.Url == "http://localhost:3000/about", 3);
-        Assert.That(driver.Url, Is.EqualTo("http://localhost:3000/about"));
+        SeleniumHelpers.WaitUntil(() => driver.Url == Environment.AboutUrl, 3);
+        Assert.That(driver.Url, Is.EqualTo(Environment.AboutUrl));
         IWebElement tmdbLogo = driver.FindElement(By.CssSelector("img[alt='The Movie Database logo']"));
         Assert.That(tmdbLogo.Displayed, Is.True);
     }
@@ -58,7 +58,7 @@ public class NavigationTests
     public void HomePageLink()
     {
         // Navigate to about page
-        driver.Url = "http://localhost:3000/about";
+        driver.Url = Environment.AboutUrl;
         driver.Manage().Window.FullScreen();
 
         // Check the home link and click it
@@ -67,8 +67,8 @@ public class NavigationTests
         homeLink.Click();
 
         // Assert navigation
-        SeleniumHelpers.WaitUntil(() => driver.Url == "http://localhost:3000/", 3);
-        Assert.That(driver.Url, Is.EqualTo("http://localhost:3000/"));
+        SeleniumHelpers.WaitUntil(() => driver.Url == Environment.BaseUrl, 3);
+        Assert.That(driver.Url, Is.EqualTo(Environment.BaseUrl));
         IWebElement recommendButton = driver.FindElement(By.Id("home-recommendButton"));
         Assert.That(recommendButton.Displayed, Is.True);
     }

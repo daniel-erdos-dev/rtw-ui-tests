@@ -31,7 +31,7 @@ public class MainPageTests
     [SetUp]
     public void SetupMainPageTests()
     {
-        driver.Url = "http://localhost:3000/";
+        driver.Url = Environment.BaseUrl;
     }
 
     [OneTimeSetUp]
