@@ -32,10 +32,15 @@ public class MainPageTests
     public void SetupMainPageTests()
     {
         driver.Url = "http://localhost:3000/";
+    }
+
+    [OneTimeSetUp]
+    public void OneTimeSetupMainPageTests()
+    {
         driver.Manage().Window.FullScreen();
     }
 
-    [TearDown]
+    [OneTimeTearDown]
     public void TearDownMainPageTests()
     {
         driver.Close();
