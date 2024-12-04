@@ -12,9 +12,7 @@ public class MainPageTests
     private readonly IWebDriver driver;
     private readonly WebDriverWait wait;
 
-    private readonly By RecommendButtonSelector = By.Id("home-recommendButton");
     private readonly By HeaderTextSelector = By.Id("home-headerText");
-    private readonly By FavoriteMovieInputSelector = By.Id("home-favoriteMovieInput");
 
     public MainPageTests() {
         driver = Environment.BrowserType switch
@@ -51,9 +49,9 @@ public class MainPageTests
     [Description("Home page should contain header text, input field and recommend button")]
     public void TestBasicUIElements()
     {
-        IWebElement recommendButton = driver.FindElement(RecommendButtonSelector);
+        IWebElement recommendButton = driver.FindElement(CommonSelectors.RecommendButtonSelector);
         IWebElement headerText = driver.FindElement(HeaderTextSelector);
-        IWebElement favoriteMovieInput = driver.FindElement(FavoriteMovieInputSelector);
+        IWebElement favoriteMovieInput = driver.FindElement(CommonSelectors.FavoriteMovieInputSelector);
 
         Assert.Multiple(() => 
         {
@@ -70,8 +68,8 @@ public class MainPageTests
     [Description("Recommend button should be enabled when there is text in the input field")]
     public void TestRecommendButtonStateChange()
     {
-        IWebElement recommendButton = driver.FindElement(RecommendButtonSelector);
-        IWebElement favoriteMovieInput = driver.FindElement(FavoriteMovieInputSelector);
+        IWebElement recommendButton = driver.FindElement(CommonSelectors.RecommendButtonSelector);
+        IWebElement favoriteMovieInput = driver.FindElement(CommonSelectors.FavoriteMovieInputSelector);
 
         // base state
         Assert.Multiple(() => 

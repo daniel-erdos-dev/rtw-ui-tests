@@ -1,7 +1,6 @@
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
-using OpenQA.Selenium.Support.UI;
 
 namespace RTW_UI_TESTS;
 
@@ -67,9 +66,6 @@ public class NavigationTests
         homeLink.Click();
 
         // Assert navigation
-        SeleniumHelpers.WaitUntil(() => driver.Url == Environment.BaseUrl, 3);
-        Assert.That(driver.Url, Is.EqualTo(Environment.BaseUrl));
-        IWebElement recommendButton = driver.FindElement(By.Id("home-recommendButton"));
-        Assert.That(recommendButton.Displayed, Is.True);
+        CommonChecks.WeAreOnHomePage(driver);
     }
 }
